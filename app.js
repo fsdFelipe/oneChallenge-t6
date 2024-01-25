@@ -1,27 +1,22 @@
-function criptografar() {
-    let text = document.getElementById("texto").value;
-
+function verificarCampoTexto(text, mensagemVazia, mensagemLetrasMaiusculas) {
     // Verificar se o campo de texto está vazio
     if (!text.trim()) {
-        labelText = "Digite uma mensagem para criptografar";
-        var labelElement = document.getElementById("label");
-
-        // Mudar a cor do texto para vermelho
-        labelElement.style.color = "red";
-        labelElement.innerText = labelText;
-
-        // Agendar a remoção da mensagem após 3 segundos
-        setTimeout(function() {
-            labelElement.innerText = "Nenhuma mensagem encontrada";
-            labelElement.style.color = ""; // Resetar a cor
-        }, 3000);
-
-        return;
+        labelText = mensagemVazia;
+        exibirMensagemErro(labelText);
+        return false;
     }
 
     // Verificar se há letras maiúsculas no texto
-if (/[A-Z]/.test(text)) {
-    labelText = "Apenas letras MINUSCULAS";
+    if (/[A-Z]/.test(text)) {
+        labelText = mensagemLetrasMaiusculas;
+        exibirMensagemErro(labelText);
+        return false;
+    }
+
+    return true;
+}
+
+function exibirMensagemErro(labelText) {
     var labelElement = document.getElementById("label");
 
     // Mudar a cor do texto para vermelho
@@ -33,9 +28,14 @@ if (/[A-Z]/.test(text)) {
         labelElement.innerText = "Digite novamente";
         labelElement.style.color = ""; // Resetar a cor
     }, 3000);
-
-    return;
 }
+
+function criptografar() {
+    let text = document.getElementById("texto").value;
+
+    if (!verificarCampoTexto(text, "Digite uma mensagem para criptografar", "Apenas letras MINUSCULAS")) {
+        return;
+    }
 
     // Função para substituir uma letra por duas letras à frente
     function novaLetra(letra) {
@@ -74,21 +74,7 @@ if (/[A-Z]/.test(text)) {
 function descriptografar() {
     let text = document.getElementById("texto").value;
 
-     // Verificar se o campo de texto está vazio
-    if (!text.trim()) {
-        labelText = "Digite uma mensagem para descriptografar";
-        var labelElement = document.getElementById("label");
-
-        // Mudar a cor do texto para vermelho
-        labelElement.style.color = "red";
-        labelElement.innerText = labelText;
-
-        // Agendar a remoção da mensagem após 3 segundos
-        setTimeout(function() {
-            labelElement.innerText = "Nenhuma mensagem encontrada";
-            labelElement.style.color = ""; // Resetar a cor
-        }, 3000);
-
+   if (!verificarCampoTexto(text, "Digite uma mensagem para descriptografar", "Apenas letras MINUSCULAS")) {
         return;
     }
 
