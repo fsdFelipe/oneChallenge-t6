@@ -37,21 +37,11 @@ function criptografar() {
         return;
     }
 
-    // Função para substituir uma letra por duas letras à frente
-    function novaLetra(letra) {
-        const alphabet = "abcdefghijklmnopqrstuvwxyz";
-        const index = alphabet.indexOf(letra);
-        if (index !== -1) {
-            // Substituir por duas letras à frente, considerando wrap-around
-            const newIndex = (index + 2) % 26;
-            return alphabet[newIndex];
-        }
-        return letra; // Se não for uma letra, mantém inalterado
-    }
-
-    // Substituir cada letra no texto
-    text = text.split('').map(novaLetra).join('');
-
+    text = text.replace(/e/g, "enter");
+    text = text.replace(/i/g, "imes");
+    text = text.replace(/a/g, "ai");
+    text = text.replace(/o/g, "ober");
+    text = text.replace(/u/g, "ufat");
     // exibir texto criptografado na area texto-final
     document.getElementById("texto-final").innerText = text;
 
@@ -78,21 +68,11 @@ function descriptografar() {
         return;
     }
 
-    // Função para substituir uma letra por duas letras à frente
-    function novaLetra(letra) {
-        const alphabet = "abcdefghijklmnopqrstuvwxyz";
-        const index = alphabet.indexOf(letra);
-        if (index !== -1) {
-            // Substituir por duas letras à frente
-            const newIndex = (index - 2 + 26) % 26;
-            return alphabet[newIndex];
-        }
-        return letra; // Se não for uma letra, mantém inalterado
-    }
-
-    // Substituir cada letra no texto na area texto-final
-    text = text.split('').map(novaLetra).join('');
-
+    text = text.replace(/ufat/g, "u");
+    text = text.replace(/ober/g, "o");
+    text = text.replace(/ai/g, "a");
+    text = text.replace(/imes/g, "i");
+    text = text.replace(/enter/g, "e");
     // exibir codigo descriptografado
     document.getElementById("texto-final").innerText = text;
 
@@ -113,7 +93,7 @@ function descriptografar() {
 }
 
 
-function copiarTexto() {
+function copiarTexto() { 
     const textAfterElement = document.getElementById("texto-final");
     const text = textAfterElement.innerText;
 
@@ -127,6 +107,7 @@ function buttonAction(id) {
     const originalColor = button.style.backgroundColor;
     const orignalText = button.innerHTML;
     button.disabled = true;
+
 
     button.innerHTML = "OK !";
     //button.style.backgroundColor = "#28ff68";
