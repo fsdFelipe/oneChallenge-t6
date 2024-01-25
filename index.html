@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One - EncryptChallenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+    <header>
+            <a href="https://cursos.alura.com.br/" target="_blank">
+                <img src="img/Logo.svg" alt="Logo Alura">
+            </a>
+    </header>
+    <div id="container">
+        <div id="text-content">
+              <textarea id="texto" placeholder="Digite seu texto aqui"></textarea>
+              <div id="alerta">
+                <img src="img/bi_exclamation-circle-fill.svg" />
+                <p>Apenas letras minúsculas e sem acento.</p>
+              </div>
+            <div id="buttons">
+                <button id="botaoCriptografar" onclick="criptografar()">Criptografar</button>
+                <button id="botaoDescriptografar" onclick="descriptografar()">Descriptografar</button>
+            </div>
+        </div>
+        <div id="resposta">
+            <div id="top">
+            <img src="img/image.svg" />
+            <label id="label">Nenhuma mensagem encontrada</label>
+            <span id="texto-final">Sua mensagem criptografada aparecerá aqui</span>
+            </div>
+            <button id="copiarTexto" onclick="copiarTexto()">Copiar</button>
+        </div>
+    </div>
+    <footer>Desenvolvido por Felipe Dias - 2024</footer>
+</body>
+
+</html>
